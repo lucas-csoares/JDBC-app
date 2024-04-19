@@ -10,7 +10,9 @@ import db.DB;
 public class Program {
 
 	public static void main(String[] args) {
-		
+		/**
+		 * Recursos externos (não controlados pela JVM do Java)
+		 */
 		Connection conn = null;
 		Statement st = null;
 		ResultSet rs = null;
@@ -33,6 +35,11 @@ public class Program {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
+		}
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+			DB.closeConnection();
 		}
 		
 		

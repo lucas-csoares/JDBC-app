@@ -60,7 +60,6 @@ public class DB {
 		}
 	}
 	
-	
 	/**
 	 * Método para fechar um Statement
 	 */
@@ -75,7 +74,7 @@ public class DB {
 	
 	
 	/**
-	 * 
+	 * Método para fechar o ResultSet
 	 */
 	public static void closeResultSet(ResultSet rs) {
 		if(rs != null)
@@ -85,5 +84,6 @@ public class DB {
 				throw new DbException(e.getMessage());
 			}
 	}
+	
 
 }
