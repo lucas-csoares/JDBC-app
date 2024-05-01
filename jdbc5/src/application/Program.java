@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import db.DB;
+import db.DbIntegrityException;
 
 public class Program {
 
@@ -20,16 +21,14 @@ public class Program {
 		try {
 			conn = DB.getConnection();
 			
-			// Comando de atualização do bd
 			st = conn.prepareStatement(
-					"UPDATE seller "
-					+ "SET BaseSalary = BaseSalary + ? "
-					+ "WHERE " //Restrição para não atualizar todos os registros
-					+ "(DepartmentId = ?)"	
+					"DELETE FROM department "
+					+ "WHERE "
+				    + "Id = ?"
 					);
 			
-			st.setDouble(1, 200.00); //primeira interrogação (1) 
-			st.setInt(2, 2);
+			//st.setInt(1, 5); //primeiro interrogação cujo valor é 5
+			st.setInt(1, 2); // Caso tente apagar um id que tem vinculação com um empregado, a exceção é lançada indicando erro de integridade referencial
 			
 			int linhasAfetadas = st.executeUpdate();
 			
@@ -37,7 +36,8 @@ public class Program {
 			
 		}
 		catch(SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace(); //Impressão do stacktrace
+			throw new DbIntegrityException(e.getMessage());
 		}
 		finally {
 			DB.closeStatement(st);
