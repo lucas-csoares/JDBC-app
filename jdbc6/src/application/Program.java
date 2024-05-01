@@ -29,10 +29,10 @@ public class Program {
 			int rows1 = st.executeUpdate("UPDATE seller SET BaseSalary = 2090 WHERE DepartmentId = 1");//Número de linhas afetas
 			
 			//Gerando uma exceção no meio do caminho para simular falha na transação
-			//int x = 1;
-			//if(x < 2) {
-			//	throw new SQLException("Fake error ");
-			//}
+			int x = 1;
+			if(x < 2) {
+				throw new SQLException("Fake error ");
+			}
 			// Mesmo após a exceção, o primeiro comando foi executado na base de dados
 			
 			int rows2 = st.executeUpdate("UPDATE seller SET BaseSalary = 3090 WHERE DepartmentId = 2");//Número de linhas afetas

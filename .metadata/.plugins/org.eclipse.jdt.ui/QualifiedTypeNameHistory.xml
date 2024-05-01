@@ -10,4 +10,6 @@
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="db.DbIntegrityException"/>
+    <fullyQualifiedTypeName name="db.DbException"/>
 </qualifiedTypeNameHistroy>
